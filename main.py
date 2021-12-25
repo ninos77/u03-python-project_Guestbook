@@ -48,7 +48,7 @@ def check_user_input_str(question):
             pass   
     return str_input
 
-#create ID  when users write a post in guestbook
+#create ID when users write a post in guestbook
 def generate_user_id():
     df = pd.read_csv('data.csv', delimiter=',')
     list_of_rows = [list(row) for row in df.values]
@@ -68,3 +68,22 @@ def print_csv_data():
         print("")
         print("                 THERE IS NO MESSAGES     \n")    
     print("============================================================================ \n")
+
+# write a post in guestbook(csv.file) with (name,email,message)
+def insert_data():
+    with open('data.csv', 'a+') as f:
+        w = csv.writer(f)
+        save = "y"
+        while save == "y":
+            user= User(generate_user_id(),check_user_input_str("Enter your name: ")
+            ,check_user_input_str("Enter Email: "))
+            message = check_user_input_str("Write your message: ")
+            save = input("Would you like to save? Y/N: ").lower()
+            if save == "y":
+                w.writerow([user.id,user.name,user.email,message])
+                print("---Your data has been saved---")
+                save = "no"
+
+
+insert_data()
+print_csv_data()
