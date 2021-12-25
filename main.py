@@ -14,6 +14,7 @@ import pandas as pd
 #a constant list with 3 choice. Will used to(write,update,delete) and (name,email,message)
 OPTIONS = [1,2,3]
 
+
 #verify right option
 def is_options(value):
     try:
@@ -24,6 +25,7 @@ def is_options(value):
             return False
     except ValueError:
       return False
+
 
 #to check if users have entered an integer
 def check_user_input_int(question):
@@ -37,6 +39,7 @@ def check_user_input_int(question):
         
     return int_input
 
+
 #to check if users have entered string not empty 
 def check_user_input_str(question):
     while True:
@@ -48,6 +51,7 @@ def check_user_input_str(question):
             pass   
     return str_input
 
+
 #create ID when users write a post in guestbook
 def generate_user_id():
     df = pd.read_csv('data.csv', delimiter=',')
@@ -57,6 +61,15 @@ def generate_user_id():
         if user_id == row[0]:
             user_id = list_of_rows[-1][0]+1
     return user_id
+
+# get all id from csv.file to use it in another functions
+def get_id_list():
+    data = pd.read_csv("data.csv")
+    list_id = []
+    for i in data['id']:
+        list_id.append(i)
+    return list_id 
+
 
 # print csv file contents
 def print_csv_data():
@@ -68,6 +81,7 @@ def print_csv_data():
         print("")
         print("                 THERE IS NO MESSAGES     \n")    
     print("============================================================================ \n")
+
 
 # write a post in guestbook(csv.file) with (name,email,message)
 def insert_data():
@@ -85,5 +99,6 @@ def insert_data():
                 save = "no"
 
 
+ 
 insert_data()
 print_csv_data()
