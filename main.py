@@ -11,6 +11,19 @@ import csv
 #We have to install Pandas--> https://pandas.pydata.org/docs/getting_started/install.html
 import pandas as pd
 
+#a constant list with 3 choice. Will used to(write,update,delete) and (name,email,message)
+OPTIONS = [1,2,3]
+
+#verify right option
+def is_options(value):
+    try:
+        int_val = int(value)
+        if int_val in OPTIONS:
+            return True
+        else:
+            return False
+    except ValueError:
+      return False
 
 #to check if users have entered an integer
 def check_user_input_int(question):
