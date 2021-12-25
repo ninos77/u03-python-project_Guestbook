@@ -35,8 +35,8 @@ def check_user_input_str(question):
             pass   
     return str_input
 
-#create ID for each post when users write in guestbook
-def generate_id():
+#create ID  when users write a post in guestbook
+def generate_user_id():
     df = pd.read_csv('data.csv', delimiter=',')
     list_of_rows = [list(row) for row in df.values]
     user_id = len(list_of_rows) + 1  
@@ -44,3 +44,14 @@ def generate_id():
         if user_id == row[0]:
             user_id = list_of_rows[-1][0]+1
     return user_id
+
+# print csv file contents
+def print_csv_data():
+    print("==================== ALl Messages ==========================================")
+    file_csv = pd.read_csv('data.csv',index_col=0)
+    if not file_csv.empty:
+        print(file_csv)
+    else:
+        print("")
+        print("                 THERE IS NO MESSAGES     \n")    
+    print("============================================================================ \n")
