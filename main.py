@@ -111,9 +111,39 @@ def delete_data():
             break
         else:
             print("There is no record for this id") 
- 
+
+# update the post based on your choice(email,name,message)
+def update_data():
+    while True:
+        row_to_update = check_user_input_int("Enter Id number for the record you want to update: ")
+        if row_to_update in get_id_list():
+            print('choose one from options below')
+            print('1.Update name')
+            print('2.Update email')
+            print('3.Update message')
+            choice = check_user_input_int("Enter your choice: ")
+            while is_options(choice) == False:
+                choice = check_user_input_int(f"Please make your right choice between ({str(OPTIONS[0])}-{str(OPTIONS[-1])}): ")      
+            data = pd.read_csv("data.csv")
+            index_to_update = data.index[data['id']==row_to_update]
+            if choice == 1:
+                name = check_user_input_str("Enter name: ")
+                data.loc[index_to_update,"name"] = name
+            elif choice == 2:
+                email = check_user_input_str("Enter email: ")
+                data.loc[index_to_update,"email"] = email
+            elif choice == 3:
+                message = check_user_input_str("Enter message: ")
+                data.loc[index_to_update,"message"] = message        
+            data.to_csv('data.csv',index=False)
+            print("\n---Your data has been updated---\n")
+            print_csv_data()
+            break
+        else:
+            print("There is no record for this id ") 
  
 print_csv_data()
 #insert_data()
-delete_data()
+#delete_data()
+#update_data()
 #print_csv_data()
