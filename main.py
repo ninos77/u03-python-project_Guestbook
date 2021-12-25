@@ -98,7 +98,22 @@ def insert_data():
                 print("---Your data has been saved---")
                 save = "no"
 
-
+# delete post from csv.file by id number
+def delete_data():
+    while True:
+        row_to_delete = check_user_input_int("Enter Id number for the record you want to delete: ")
+        if row_to_delete in get_id_list():
+            data = pd.read_csv("data.csv")
+            data = data.drop(data.index[data['id']==row_to_delete])
+            print("\n---Your data has been deletet---\n")
+            data.to_csv('data.csv',index=False)
+            print_csv_data()
+            break
+        else:
+            print("There is no record for this id") 
  
-insert_data()
+ 
 print_csv_data()
+#insert_data()
+delete_data()
+#print_csv_data()
