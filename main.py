@@ -141,9 +141,62 @@ def update_data():
             break
         else:
             print("There is no record for this id ") 
- 
-print_csv_data()
-#insert_data()
-#delete_data()
-#update_data()
-#print_csv_data()
+
+
+def start_guestbook_app():
+    start = True
+    while start:
+        print("\n++----------- Welcome To Guestbook ---------------++ \n")
+        print("   Here you can write your message in the guestbook \n")
+        print_csv_data()
+        if get_id_list():
+            print('choose one from options below')
+            print('1.Write your Post in Guestbook')
+            print('2.Update Post')
+            print('3.Delete Post')
+            choice = check_user_input_int("Please make your choice: ")
+            while is_options(choice) == False:
+                choice = check_user_input_int(f"Please make your right choice between ({str(OPTIONS[0])}-{str(OPTIONS[-1])}): ")
+            if choice == 1:
+                while True:
+                    insert_data()
+                    ask = check_user_input_str('Want to make another post y/n: ').lower()
+                    if ask == 'n':
+                        break
+            elif choice == 2:
+                while True:
+                    update_data()
+                    ask = check_user_input_str('Want to make another update y/n: ').lower()
+                    if ask == 'n':
+                        break
+            
+            elif choice == 3:
+                while True:
+                    if get_id_list():
+                        delete_data()
+                        if get_id_list():
+                            ask = check_user_input_str('Want to make another delete y/n: ').lower()
+                            if ask == 'n':
+                                break
+                        else:
+                            print("There is no post to delete")
+                            break    
+                    else:
+                        print("There is no post to delete")
+                        break
+            print("")
+            print("Thanks for using guestbook \n")
+            print_csv_data()
+            start = False
+        else:
+            while True:
+                insert_data()
+                ask = check_user_input_str('Want to make another post y/n: ').lower()
+                if ask == 'n':
+                    break
+            print("")
+            print("Thanks for using guestbook \n")
+            print_csv_data()
+            start = False       
+
+start_guestbook_app()
