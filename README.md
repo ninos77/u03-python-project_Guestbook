@@ -7,7 +7,7 @@
 1. It is possible to create a new guestbook entry (name,email,message).
 2. The user will not be allowed to fill in a guestbook entry that does not contain a name or email or message(at least one character each).
 3. Each post has id.
-4. Because each post has an id that can help to make(delete,edit,update) by selecting the id of that post to make the changes.
+4. Each post has an id that can help to make(delete,edit,update) by selecting the id of that post to make the changes.
 5. Each change makes will be saved again in the same file with same id.
 
 # Technologies Used:
