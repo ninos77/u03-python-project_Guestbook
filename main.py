@@ -8,14 +8,14 @@ class User():
 
 import csv
 
-#We have to install Pandas--> https://pandas.pydata.org/docs/getting_started/install.html
+# To run this application We have to install Pandas--> https://pandas.pydata.org/docs/getting_started/install.html
 import pandas as pd
 
-#a constant list with 3 choice. Will used to(write,update,delete) and (name,email,message)
+# a constant list with 3 choice. Will used to(write,update,delete) and (name,email,message)
 OPTIONS = [1,2,3]
 
 
-#verify right option
+# verify right option
 def is_options(value):
     try:
         int_val = int(value)
@@ -27,7 +27,7 @@ def is_options(value):
       return False
 
 
-#to check if users have entered an integer
+# to check if users have entered an integer
 def check_user_input_int(question):
     while True:
         try:
@@ -40,7 +40,7 @@ def check_user_input_int(question):
     return int_input
 
 
-#to check if users have entered string not empty 
+# to check if users have entered string not empty 
 def check_user_input_str(question):
     while True:
         str_input = input(question)
@@ -52,7 +52,7 @@ def check_user_input_str(question):
     return str_input
 
 
-#create ID when users write a post in guestbook
+# create ID when users write a post in guestbook
 def generate_user_id():
     df = pd.read_csv('data.csv', delimiter=',')
     list_of_rows = [list(row) for row in df.values]

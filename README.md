@@ -1,4 +1,6 @@
 # u03-python-project_Guestbook
+## **NOTE** To run this application We need to install Pandas--> https://pandas.pydata.org/docs/getting_started/install.html
+
 ## This application is a guestbook entry. The purpose of this application is
 - To create a new guestbook entry consisting of name,email and message.
 - And save it in a csv file if you wanted to use it for later by id selecting.
@@ -13,3 +15,4 @@
 # Technologies Used:
 - Has used **Python** as a programming language.
 - **Pandas** is an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language. https://pandas.pydata.org/docs/getting_started/install.html
+
